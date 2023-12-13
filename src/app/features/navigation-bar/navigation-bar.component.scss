@@ -1,0 +1,30 @@
+.main-nav {
+  position: fixed;
+  top: 0%;
+  width: 100vw;
+  background-color: cadetblue;
+
+  &__items,
+  &__item,
+  &__logo {
+    display: inline-block;
+    margin: 8px 16px;
+    padding: 0;
+    list-style: none;
+
+    &--link {
+      text-decoration: none;
+      color: #074c63ea;
+      font-weight: bold;
+
+      &:hover {
+        color: #367fa1ea;
+        border-bottom: 2px solid gray;
+      }
+    }
+  }
+
+  div {
+    float: right;
+  }
+}
