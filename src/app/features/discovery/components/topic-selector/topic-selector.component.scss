@@ -1,0 +1,29 @@
+.topics {
+  margin-left: 3rem;
+
+  &__container {
+    display: flex;
+    gap: 0.7rem;
+    margin-top: 8px;
+
+    &--item {
+      border-radius: 1rem;
+      font-size: 1rem;
+      padding: 6px 16px;
+      border: 1px solid;
+
+      &:hover {
+        cursor: pointer;
+        background-color: gray;
+      }
+    }
+  }
+}
+
+.selected {
+  background-color: blueviolet;
+}
+
+span {
+  font-weight: bold;
+}

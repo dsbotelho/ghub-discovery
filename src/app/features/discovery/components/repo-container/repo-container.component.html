@@ -1,1 +1,10 @@
-<p>repo-container works!</p>
+<h2 class="title">
+  {{ title }}
+</h2>
+
+<div class="slider">
+  <div class="slider__container">
+    <ghub-repo-item *ngFor="let bookmark of _bookmarkData" [repository]="bookmark"
+      (bookmarkChanged)="removeBookmark($event)" />
+  </div>
+</div>

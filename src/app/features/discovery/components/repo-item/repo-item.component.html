@@ -1,0 +1,12 @@
+<div class="repo-item">
+
+  <div class="repo-item__header">
+    <span class="repo-item__header--title">{{ repository.title }}</span>
+    <div class="repo-item__header--icon">
+      <button (click)="updateBookmark()">
+        <i [ngClass]=" isBookmarked ? 'star--solid' : 'star--regular'"></i>
+      </button>
+    </div>
+  </div>
+
+</div>

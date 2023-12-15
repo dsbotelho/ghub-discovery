@@ -1,0 +1,23 @@
+.title {
+  margin-left: 3rem;
+  margin-bottom: 0;
+}
+
+.slider {
+  // border: 1px solid yellow;
+  position: relative;
+
+  &__container {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    padding: 25px 3rem;
+    // margin-left: 3rem;
+    // border: 1px solid red;
+    overflow-x: hidden;
+
+    &:hover {
+      overflow-x: auto;
+    }
+  }
+}

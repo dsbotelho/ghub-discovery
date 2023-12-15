@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'sword-login',
+  selector: 'ghub-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
