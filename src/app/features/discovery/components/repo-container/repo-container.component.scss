@@ -4,7 +4,6 @@
 }
 
 .slider {
-  // border: 1px solid yellow;
   position: relative;
 
   &__container {
@@ -12,8 +11,6 @@
     display: flex;
     gap: 20px;
     padding: 25px 3rem;
-    // margin-left: 3rem;
-    // border: 1px solid red;
     overflow-x: hidden;
 
     &:hover {

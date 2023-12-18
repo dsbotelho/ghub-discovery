@@ -7,8 +7,10 @@ import { DiscoveryContainerComponent } from './features/discovery/components/dis
 import { RepositoryContainerComponent } from './features/discovery/components/repo-container/repo-container.component';
 import { NavigationBarComponent } from './features/navigation-bar/navigation-bar.component';
 import { RepoItemComponent } from './features/discovery/components/repo-item/repo-item.component';
-import { TopicClassSelector, TopicSelectorComponent } from './features/discovery/components/topic-selector/topic-selector.component';
+import { TopicSelectorComponent } from './features/discovery/components/topic-selector/topic-selector.component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { RepositoryConfigDirective } from './features/discovery/directives/repository-config.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,13 +21,13 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     RepositoryContainerComponent,
     RepoItemComponent,
     TopicSelectorComponent,
-    TopicClassSelector
-
+    RepositoryConfigDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NzButtonModule
+    NzButtonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

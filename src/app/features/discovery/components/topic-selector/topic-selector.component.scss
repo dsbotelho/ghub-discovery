@@ -1,6 +1,10 @@
 .topics {
   margin-left: 3rem;
 
+  &__title {
+    font-weight: bold;
+  }
+
   &__container {
     display: flex;
     gap: 0.7rem;
@@ -11,19 +15,6 @@
       font-size: 1rem;
       padding: 6px 16px;
       border: 1px solid;
-
-      &:hover {
-        cursor: pointer;
-        background-color: gray;
-      }
     }
   }
-}
-
-.selected {
-  background-color: blueviolet;
-}
-
-span {
-  font-weight: bold;
 }

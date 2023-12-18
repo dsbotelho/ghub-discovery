@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Repository } from '../../models/repository';
+import { Repository } from '../../models/repository.model';
 
 @Component({
   selector: 'ghub-repository-container',

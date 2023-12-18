@@ -1,9 +1,10 @@
 <div class="topics">
-  <span>Toggle topics to show</span>
+  <span class="topics__title">Toggle topics to show</span>
   <div class="topics__container">
-    <ng-container *ngFor="let topic of topics">
-      <button nz-button nzShape="round" [ngClass]="booli(topic)" (click)="updateTopicList(topic)">
-        <span>{{ topic }}</span>
+    <ng-container *ngFor="let topic of selectedTopics()">
+      <button nz-button nzShape="round" [nzType]="topic.isSelected ? 'primary' : 'default'"
+        (click)="updateTopicList(topic)">
+        <span>{{ topic.name }}</span>
       </button>
     </ng-container>
   </div>

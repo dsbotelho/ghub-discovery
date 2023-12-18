@@ -1,28 +1,23 @@
 import { Injectable, signal } from "@angular/core";
+import { Topic, topicsInitialState } from "../models/topic.model";
 
 @Injectable({ providedIn: 'root' })
 export class TopicSelectorService {
-  private readonly topicsSignal = signal(['Angular']);
+  private readonly topicsSignal = signal<Topic[]>(topicsInitialState);
 
   readonly topics = this.topicsSignal.asReadonly();
 
-  addTopic(value: string): void {
-    this.topicsSignal.update(topics => [...topics, value]);
-  }
+  // addTopic(value: Topic): void {
+  //   this.topicsSignal.update(topics => [...topics, value]);
+  // }
 
-  removeTopic(value: string): void {
-    this.topicsSignal.update(topics => topics.filter(topic => topic !== value));
-  }
+  // removeTopic(value: Topic): void {
+  //   this.topicsSignal.update(topics => topics.filter(topic => topic.name !== value.name));
+  // }
 
-  updateTopicList(value: string): void {
-    if (this.topicsSignal().includes(value)) {
-      console.log(this.topics());
-      this.removeTopic(value);
-      console.log(this.topics());
-      return;
-    }
-
-    this.addTopic(value);
-    console.log(this.topics());
+  updateTopic(data: Topic): void {
+    this.topicsSignal.update(topics =>
+      topics.map(topic => topic.name === data.name ?
+        { ...topic, isSelected: !data.isSelected } : topic))
   }
 }

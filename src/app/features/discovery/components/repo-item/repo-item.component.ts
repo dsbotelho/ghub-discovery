@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { Repository } from '../../models/repository';
+import { Repository } from '../../models/repository.model';
 
 @Component({
   selector: 'ghub-repo-item',
