@@ -11,6 +11,7 @@ import { TopicSelectorComponent } from './features/discovery/components/topic-se
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { RepositoryConfigDirective } from './features/discovery/directives/repository-config.directive';
 import { HttpClientModule } from '@angular/common/http';
+import { ShortNumberPipe } from './features/discovery/pipes/short-number.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     RepositoryContainerComponent,
     RepoItemComponent,
     TopicSelectorComponent,
-    RepositoryConfigDirective
+    RepositoryConfigDirective,
+    ShortNumberPipe
   ],
   imports: [
     BrowserModule,

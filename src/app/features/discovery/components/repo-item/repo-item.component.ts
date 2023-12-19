@@ -1,11 +1,17 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { Repository } from '../../models/repository.model';
 
 @Component({
   selector: 'ghub-repo-item',
   templateUrl: './repo-item.component.html',
   styleUrl: './repo-item.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RepoItemComponent {
   @Input() repository!: Repository;
@@ -20,5 +26,4 @@ export class RepoItemComponent {
   updateBookmark(): void {
     this.bookmarkChanged.emit(this.repository);
   }
-
 }

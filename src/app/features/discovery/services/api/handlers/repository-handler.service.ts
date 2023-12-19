@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { RepositoryHttpResponse } from '../../../models/api/repository-http.model';
-import { RepositoryV2 } from '../../../models/repository.model';
+import { Repository } from '../../../models/repository.model';
 
 @Injectable({ providedIn: 'root' })
 export class RepositoryHandlerService {
   constructor() {}
 
-  mapRepositoryHttpResponse(response: RepositoryHttpResponse): RepositoryV2[] {
+  mapRepositoryHttpResponse(response: RepositoryHttpResponse): Repository[] {
     return response.items.map(
       (item) =>
-        <RepositoryV2>{
+        <Repository>{
           description: item.description,
           forks: item.forks,
           full_name: item.full_name,

@@ -1,24 +1,32 @@
+$card-header-height: 3rem;
+
 :host {
   flex: 0 0 15%;
 }
 
-.repo-item {
+.repo-card {
   background: lightblue;
-  height: 150px;
+  height: 200px;
   width: 100%;
-  // border: 1px solid blue;
+  min-width: 300px;
   transition: all ease-in-out 0.5s;
   border-radius: 5px;
-  // box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
 
   &__header {
     display: flex;
+    height: $card-header-height;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid grey;
 
+    img {
+      width: 10%;
+      border-radius: 4px;
+    }
+
     &--title {
-      margin-left: 0.5rem;
+      font-weight: bold;
+      margin: 0 0.5rem;
     }
 
     &--icon {
@@ -32,6 +40,40 @@
 
         &:hover {
           cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &__body {
+    height: calc(100% - $card-header-height);
+
+    span {
+      color: #a4a8b0;
+    }
+
+    &__metrics {
+      display: flex;
+      height: 40%;
+
+      &-item {
+        display: flex;
+        margin: 1rem;
+
+        &--text {
+          display: flex;
+          flex-direction: column;
+          margin-left: 8px;
+        }
+
+        &--icon {
+          display: flex;
+          align-items: flex-start;
+
+          i {
+            width: 16px;
+            padding-top: 3px;
+          }
         }
       }
     }

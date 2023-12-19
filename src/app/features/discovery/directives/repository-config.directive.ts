@@ -1,37 +1,54 @@
-import { Directive, Input, OnInit } from '@angular/core';
+import { Directive, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { RepositoryContainerComponent } from '../components/repo-container/repo-container.component';
-import { GithubHttpService } from '../services/api/github-http.service';
 import { RepositoryRequestData } from '../models/api/repository-http.model';
+import { Repository } from '../models/repository.model';
+import { GithubHttpService } from '../services/api/github-http.service';
 
 @Directive({
-  selector: '[ghubRepositoryConfig]'
+  selector: '[ghubRepositoryConfig]',
 })
-export class RepositoryConfigDirective implements OnInit {
-  private readonly defaultPerPage = 5;
+export class RepositoryConfigDirective implements OnInit, OnDestroy {
+  private subscription = new Subscription();
+  private readonly defaultPerPage = 10;
   private readonly defaultStars = 1000;
 
   @Input() language!: string;
 
+  data: Repository[] = [];
   defaultRequestData: RepositoryRequestData = {
     per_page: this.defaultPerPage,
     page: 1,
     filter: {
-      stars: this.defaultStars
-    }
-  }
+      stars: this.defaultStars,
+    },
+  };
 
-  constructor(private readonly repositoryContainer: RepositoryContainerComponent, private readonly gitHubHttpService: GithubHttpService) { }
+  constructor(
+    private readonly repositoryContainer: RepositoryContainerComponent,
+    private readonly gitHubHttpService: GithubHttpService
+  ) {}
 
   ngOnInit(): void {
     this.defaultRequestData.filter = {
       ...this.defaultRequestData.filter,
-      language: this.language
-    }
+      language: this.language,
+    };
 
     this.loadData();
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
   loadData(): void {
-    this.gitHubHttpService.getRepoListByLanguage(this.defaultRequestData);
+    this.subscription = this.gitHubHttpService
+      .getRepoListByLanguage(this.defaultRequestData)
+      .subscribe((item) => {
+        console.log(item);
+        this.data = item ?? [];
+        this.repositoryContainer.repoData = this.data;
+      });
   }
 }

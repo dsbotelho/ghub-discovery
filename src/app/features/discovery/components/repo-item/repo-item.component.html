@@ -1,12 +1,34 @@
-<div class="repo-item">
+<div class="repo-card">
+  <div class="repo-card__header">
+    <div>
+      <span class="repo-card__header--title">{{ repository.full_name }}</span>
+      <img [src]="repository.owner?.avatar_url" />
+    </div>
 
-  <div class="repo-item__header">
-    <span class="repo-item__header--title">{{ repository.title }}</span>
-    <div class="repo-item__header--icon">
+    <div class="repo-card__header--icon">
       <button (click)="updateBookmark()">
-        <i [ngClass]=" isBookmarked ? 'star--solid' : 'star--regular'"></i>
+        <i
+          [ngClass]="repository.isBookmark ? 'star--solid' : 'star--regular'"
+        ></i>
       </button>
     </div>
   </div>
-
+  <div class="repo-card__body">
+    <div>
+      <span> {{ repository.description }}</span>
+    </div>
+    <div class="repo-card__body__metrics">
+      <div class="repo-card__body__metrics-item">
+        <div class="repo-card__body__metrics-item--icon">
+          <i class="star--regular"></i>
+        </div>
+        <div class="repo-card__body__metrics-item--text">
+          <span>{{ repository.stargazers_count | shortNumber }}</span>
+          <span>Stars</span>
+        </div>
+      </div>
+      <div class="repo-card__body__metrics-item"></div>
+      <div class="repo-card__body__metrics-item"></div>
+    </div>
+  </div>
 </div>

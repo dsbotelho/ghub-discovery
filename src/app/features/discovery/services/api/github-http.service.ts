@@ -6,7 +6,7 @@ import {
   RepositoryHttpResponse,
   RepositoryRequestData,
 } from '../../models/api/repository-http.model';
-import { RepositoryV2 } from '../../models/repository.model';
+import { Repository } from '../../models/repository.model';
 import { RepositoryHandlerService } from './handlers/repository-handler.service';
 
 @Injectable({ providedIn: 'root' })
@@ -20,7 +20,7 @@ export class GithubHttpService {
 
   getRepoListByLanguage(
     requestData: RepositoryRequestData
-  ): Observable<RepositoryV2[] | undefined> {
+  ): Observable<Repository[] | undefined> {
     const params = new HttpParamsBuilder()
       .paginatedRequest(requestData)
       .sortableRequest(requestData)

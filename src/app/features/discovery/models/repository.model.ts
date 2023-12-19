@@ -1,9 +1,3 @@
-export interface Repository {
-  id: number;
-  title?: string;
-  stars: number;
-}
-
 export interface RepositoryHttp {
   id: number;
   full_name: string;
@@ -21,4 +15,4 @@ export interface Owner {
   login: string;
 }
 
-export type RepositoryV2 = RepositoryHttp & { isBookmark: boolean };
+export type Repository = RepositoryHttp & { isBookmark: boolean };
