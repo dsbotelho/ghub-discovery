@@ -2,8 +2,13 @@
   <span class="topics__title">Toggle topics to show</span>
   <div class="topics__container">
     <ng-container *ngFor="let topic of selectedTopics()">
-      <button nz-button nzShape="round" [nzType]="topic.isSelected ? 'primary' : 'default'"
-        (click)="updateTopicList(topic)">
+      <button
+        nz-button
+        nzShape="round"
+        [nzType]="topic.isSelected ? 'primary' : 'default'"
+        [disabled]="loaderService.isLoading()"
+        (click)="updateTopicList(topic)"
+      >
         <span>{{ topic.name }}</span>
       </button>
     </ng-container>

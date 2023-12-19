@@ -1,10 +1,15 @@
-<h2 class="title">
-  {{ title }}
-</h2>
+<nz-spin [nzSpinning]="loaderService.isLoading()">
+  <h2 class="title">
+    {{ title }}
+  </h2>
 
-<div class="slider">
-  <div class="slider__container">
-    <ghub-repo-item *ngFor="let repo of _repoData" [repository]="repo"
-      (bookmarkChanged)="removeBookmark($event)" />
+  <div class="slider">
+    <div class="slider__container">
+      <ghub-repo-item
+        *ngFor="let repo of _repoData"
+        [repository]="repo"
+        (bookmarkChanged)="removeBookmark($event)"
+      />
+    </div>
   </div>
-</div>
+</nz-spin>

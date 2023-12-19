@@ -6,6 +6,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { Repository } from '../../models/repository.model';
+import { LoaderService } from '../../services/loader.service';
 
 @Component({
   selector: 'ghub-repository-container',
@@ -22,7 +23,10 @@ export class RepositoryContainerComponent implements OnInit {
 
   _repoData: Repository[] = [];
 
-  constructor(private readonly cdr: ChangeDetectorRef) {}
+  constructor(
+    readonly loaderService: LoaderService,
+    private readonly cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     console.log('RepoContainer');
