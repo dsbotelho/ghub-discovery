@@ -18,7 +18,6 @@ export class RepositoryContainerComponent implements OnInit {
   @Input() set repoData(data: Repository[]) {
     this._repoData = data;
     this.cdr.detectChanges();
-    console.log(this._repoData);
   }
 
   _repoData: Repository[] = [];

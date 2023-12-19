@@ -8,3 +8,15 @@ html {
   padding: 1.5rem 0 0 0;
   font-family: 'Montserrat', sans-serif;
 }
+
+.star-regular {
+    content: url("/assets/icons/svg/star-regular.svg");
+}
+
+.star-solid {
+    content: url("/assets/icons/svg/star-solid.svg");
+}
+
+.code-fork-icon {
+  content: url("/assets/icons/svg/code-fork-solid.svg");
+}

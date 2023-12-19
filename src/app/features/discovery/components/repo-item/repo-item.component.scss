@@ -71,8 +71,8 @@ $card-header-height: 3rem;
           align-items: flex-start;
 
           i {
-            width: 16px;
-            padding-top: 3px;
+            width: 15px;
+            padding-top: 4px;
           }
         }
       }
@@ -82,16 +82,5 @@ $card-header-height: 3rem;
   &:hover {
     transform: scale(1.2);
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
-  }
-
-}
-
-.star {
-  &--regular {
-    content: url("/assets/icons/svg/star-regular.svg");
-  }
-
-  &--solid {
-    content: url("/assets/icons/svg/star-solid.svg");
   }
 }

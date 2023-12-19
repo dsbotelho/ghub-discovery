@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Repository } from '../../models/repository.model';
+import { TopicSelectorService } from '../../services/topic-selector.service';
 
 @Component({
   selector: 'ghub-discovery-container',
@@ -40,4 +41,8 @@ export class DiscoveryContainerComponent {
       stargazers_count: 3,
     },
   ];
+
+  selectedTopics = this.topicsService.topics;
+
+  constructor(private readonly topicsService: TopicSelectorService) {}
 }

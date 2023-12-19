@@ -8,7 +8,7 @@
     <div class="repo-card__header--icon">
       <button (click)="updateBookmark()">
         <i
-          [ngClass]="repository.isBookmark ? 'star--solid' : 'star--regular'"
+          [ngClass]="repository.isBookmark ? 'star-solid' : 'star-regular'"
         ></i>
       </button>
     </div>
@@ -20,11 +20,20 @@
     <div class="repo-card__body__metrics">
       <div class="repo-card__body__metrics-item">
         <div class="repo-card__body__metrics-item--icon">
-          <i class="star--regular"></i>
+          <i class="star-regular"></i>
         </div>
         <div class="repo-card__body__metrics-item--text">
           <span>{{ repository.stargazers_count | shortNumber }}</span>
           <span>Stars</span>
+        </div>
+      </div>
+      <div class="repo-card__body__metrics-item">
+        <div class="repo-card__body__metrics-item--icon">
+          <i class="code-fork-icon"></i>
+        </div>
+        <div class="repo-card__body__metrics-item--text">
+          <span>{{ repository.forks | shortNumber }}</span>
+          <span>Forks</span>
         </div>
       </div>
       <div class="repo-card__body__metrics-item"></div>

@@ -5,23 +5,19 @@ export interface Topic {
 
 export const topicsInitialState: Topic[] = [
   {
-    name: 'Angular',
-    isSelected: true
+    name: 'Javascript',
+    isSelected: true,
   },
   {
-    name: 'React',
-    isSelected: false
-  },
-  {
-    name: 'Vue',
-    isSelected: false
+    name: 'HTML',
+    isSelected: false,
   },
   {
     name: 'TypeScript',
-    isSelected: false
+    isSelected: false,
   },
   {
     name: 'CSS',
-    isSelected: false
-  }
+    isSelected: false,
+  },
 ];
