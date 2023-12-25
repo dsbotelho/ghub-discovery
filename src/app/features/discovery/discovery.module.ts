@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { DiscoveryContainerComponent } from './components/discovery-container/discovery-container.component';
@@ -15,6 +16,7 @@ import { ShortNumberPipe } from './pipes/short-number.pipe';
 @NgModule({
   imports: [
     CommonModule,
+    BrowserAnimationsModule,
     HttpClientModule,
 
     // Ant

@@ -6,10 +6,14 @@
   <div class="slider">
     <div class="slider__container">
       <ghub-repo-item
+        [@fadeAnimation]="'in'"
         *ngFor="let repository of _repoData"
         [repository]="repository"
         (bookmarkChanged)="bookmarkChanged.emit($event)"
       />
+      <div *ngIf="showLoadButton">
+        <button nz-button nzShape="round">+</button>
+      </div>
     </div>
   </div>
 </nz-spin>

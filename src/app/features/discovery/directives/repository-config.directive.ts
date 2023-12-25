@@ -6,6 +6,13 @@ import { Repository } from '../models/repository.model';
 import { GithubHttpService } from '../services/api/github-http.service';
 import { BookmarkService } from '../services/bookmark.service';
 
+/**
+ * Directive responsible for handling the logic related to each repository container.
+ * Some of its responsabilities:
+ * - Fetches data based on a selected language.
+ * - Handles adding/removing from bookmarks
+ * - Handles loading additional repositories
+ */
 @Directive({
   selector: '[ghubRepositoryConfig]',
 })
@@ -32,6 +39,7 @@ export class RepositoryConfigDirective implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.repositoryContainer.showLoadButton = true;
     this.defaultRequestData.filter = {
       ...this.defaultRequestData.filter,
       language: this.language,
@@ -83,7 +91,7 @@ export class RepositoryConfigDirective implements OnInit, OnDestroy {
   }
 
   /**
-   *
+   * Listens for changes on the bookmark list. If an element is removed, updates its current data.
    */
   setupBookmarkDeleted(): void {
     this.subscriptions.push(

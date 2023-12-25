@@ -1,3 +1,5 @@
+import { TopicLanguages } from './enums/topic-languages.enum';
+
 export interface Topic {
   name: string;
   isSelected: boolean;
@@ -5,19 +7,19 @@ export interface Topic {
 
 export const topicsInitialState: Topic[] = [
   {
-    name: 'Javascript',
+    name: TopicLanguages.javascript,
     isSelected: true,
   },
   {
-    name: 'HTML',
+    name: TopicLanguages.typescript,
     isSelected: false,
   },
   {
-    name: 'TypeScript',
+    name: TopicLanguages.html,
     isSelected: false,
   },
   {
-    name: 'CSS',
+    name: TopicLanguages.css,
     isSelected: false,
   },
 ];
