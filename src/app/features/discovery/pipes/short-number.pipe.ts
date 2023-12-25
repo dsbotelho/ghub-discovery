@@ -1,11 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+/**
+ * This code was shamefully copied and adapted from: https://gist.github.com/shifatul-i/69a2c247a414482e445b1c324b01134b
+ */
 @Pipe({
   name: 'shortNumber',
 })
 export class ShortNumberPipe implements PipeTransform {
   transform(number: number): number | string {
-    if (isNaN(number)) return '-'; // will only work value is a number
+    if (isNaN(number)) return '-';
     if (number === null) return '-';
     if (number < 1000) return number;
 

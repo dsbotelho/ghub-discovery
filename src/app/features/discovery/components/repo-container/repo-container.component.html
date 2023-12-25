@@ -6,9 +6,9 @@
   <div class="slider">
     <div class="slider__container">
       <ghub-repo-item
-        *ngFor="let repo of _repoData"
-        [repository]="repo"
-        (bookmarkChanged)="removeBookmark($event)"
+        *ngFor="let repository of _repoData"
+        [repository]="repository"
+        (bookmarkChanged)="bookmarkChanged.emit($event)"
       />
     </div>
   </div>

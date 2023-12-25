@@ -1,5 +1,5 @@
-import { Injectable, signal } from "@angular/core";
-import { Topic, topicsInitialState } from "../models/topic.model";
+import { Injectable, signal } from '@angular/core';
+import { Topic, topicsInitialState } from '../models/topic.model';
 
 @Injectable({ providedIn: 'root' })
 export class TopicSelectorService {
@@ -7,17 +7,13 @@ export class TopicSelectorService {
 
   readonly topics = this.topicsSignal.asReadonly();
 
-  // addTopic(value: Topic): void {
-  //   this.topicsSignal.update(topics => [...topics, value]);
-  // }
-
-  // removeTopic(value: Topic): void {
-  //   this.topicsSignal.update(topics => topics.filter(topic => topic.name !== value.name));
-  // }
-
   updateTopic(data: Topic): void {
-    this.topicsSignal.update(topics =>
-      topics.map(topic => topic.name === data.name ?
-        { ...topic, isSelected: !data.isSelected } : topic))
+    this.topicsSignal.update((topics) =>
+      topics.map((topic) =>
+        topic.name === data.name
+          ? { ...topic, isSelected: !data.isSelected }
+          : topic
+      )
+    );
   }
 }

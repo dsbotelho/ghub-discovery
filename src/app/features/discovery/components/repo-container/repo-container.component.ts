@@ -2,8 +2,9 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  EventEmitter,
   Input,
-  OnInit,
+  Output,
 } from '@angular/core';
 import { Repository } from '../../models/repository.model';
 import { LoaderService } from '../../services/loader.service';
@@ -14,12 +15,14 @@ import { LoaderService } from '../../services/loader.service';
   styleUrl: './repo-container.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RepositoryContainerComponent implements OnInit {
-  @Input({ required: true }) title!: string;
+export class RepositoryContainerComponent {
+  @Input() title!: string;
   @Input() set repoData(data: Repository[]) {
-    this._repoData = data;
+    this._repoData = [...data];
     this.cdr.detectChanges();
   }
+
+  @Output() bookmarkChanged = new EventEmitter<Repository>();
 
   _repoData: Repository[] = [];
 
@@ -27,15 +30,4 @@ export class RepositoryContainerComponent implements OnInit {
     readonly loaderService: LoaderService,
     private readonly cdr: ChangeDetectorRef
   ) {}
-
-  ngOnInit(): void {
-    console.log('RepoContainer');
-  }
-
-  removeBookmark(repository: Repository): void {
-    this._repoData.splice(
-      this._repoData.findIndex((it) => it.id === repository.id),
-      1
-    );
-  }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Repository } from '../../models/repository.model';
+import { BookmarkService } from '../../services/bookmark.service';
 import { TopicSelectorService } from '../../services/topic-selector.service';
 
 @Component({
@@ -9,40 +9,12 @@ import { TopicSelectorService } from '../../services/topic-selector.service';
 })
 export class DiscoveryContainerComponent {
   readonly bookmarksTitle = 'My Bookmarks';
-  readonly bookmarksData: Repository[] = [
-    {
-      id: 1,
-      full_name: 'facebook/react',
-      description: '',
-      forks: 10,
-      topics: [],
-      isBookmark: false,
-      updated_at: new Date(),
-      stargazers_count: 3,
-    },
-    {
-      id: 2,
-      full_name: 'facebook/react',
-      description: '',
-      forks: 10,
-      topics: [],
-      isBookmark: false,
-      updated_at: new Date(),
-      stargazers_count: 3,
-    },
-    {
-      id: 3,
-      full_name: 'facebook/react',
-      description: '',
-      forks: 10,
-      topics: [],
-      isBookmark: false,
-      updated_at: new Date(),
-      stargazers_count: 3,
-    },
-  ];
 
   selectedTopics = this.topicsService.topics;
+  bookmarks = this.bookmarkService.bookmarks;
 
-  constructor(private readonly topicsService: TopicSelectorService) {}
+  constructor(
+    private readonly topicsService: TopicSelectorService,
+    private readonly bookmarkService: BookmarkService
+  ) {}
 }

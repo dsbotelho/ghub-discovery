@@ -10,7 +10,7 @@ import { TopicSelectorService } from '../../services/topic-selector.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopicSelectorComponent {
-  readonly topicsService = inject(TopicSelectorService);
+  private readonly topicsService = inject(TopicSelectorService);
   readonly loaderService = inject(LoaderService);
 
   selectedTopics = this.topicsService.topics;

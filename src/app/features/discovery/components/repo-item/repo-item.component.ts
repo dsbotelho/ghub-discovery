@@ -17,12 +17,6 @@ export class RepoItemComponent {
   @Input() repository!: Repository;
   @Output() bookmarkChanged = new EventEmitter<Repository>();
 
-  isBookmarked = true;
-
-  removeBookmark(): void {
-    this.isBookmarked = !this.isBookmarked;
-  }
-
   updateBookmark(): void {
     this.bookmarkChanged.emit(this.repository);
   }

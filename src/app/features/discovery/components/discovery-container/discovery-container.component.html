@@ -1,16 +1,12 @@
-<ghub-repository-container
-  [title]="bookmarksTitle"
-  [repoData]="bookmarksData"
-/>
+<ghub-repository-container ghubBookmarkConfig [bookmarkData]="bookmarks()" />
 <ghub-topic-selector />
 
-@for (item of selectedTopics(); track item.name) {
-<ng-container *ngIf="item.isSelected">
+@for (topic of selectedTopics(); track topic.name) {
+<ng-container *ngIf="topic.isSelected">
   <ghub-repository-container
     ghubRepositoryConfig
-    [language]="item.name"
-    [title]="bookmarksTitle"
+    [language]="topic.name"
+    [title]="topic.name"
   />
 </ng-container>
 }
-<!-- <ghub-repository-container ghubRepositoryConfig [language]="'Javascript'" [title]="bookmarksTitle" /> -->

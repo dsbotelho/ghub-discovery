@@ -18,7 +18,7 @@ export class GithubHttpService {
     private readonly handler: RepositoryHandlerService
   ) {}
 
-  getRepoListByLanguage(
+  getRepoListByLanguage$(
     requestData: RepositoryRequestData
   ): Observable<Repository[] | undefined> {
     const params = new HttpParamsBuilder()
