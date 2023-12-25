@@ -20,16 +20,20 @@ export class RepositoryConfigDirective implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   private readonly defaultPerPage = 10;
   private readonly defaultStars = 1000;
+  private readonly defaultPage = 1;
+  private readonly defaultRequestData: RepositoryRequestData = {
+    per_page: this.defaultPerPage,
+    page: this.defaultPage,
+    filter: {
+      stars: this.defaultStars,
+    },
+  };
 
   @Input() language!: string;
 
   data: Repository[] = [];
-  defaultRequestData: RepositoryRequestData = {
-    per_page: this.defaultPerPage,
-    page: 1,
-    filter: {
-      stars: this.defaultStars,
-    },
+  requestData: RepositoryRequestData = {
+    ...this.defaultRequestData,
   };
 
   constructor(
@@ -40,14 +44,15 @@ export class RepositoryConfigDirective implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.repositoryContainer.showLoadButton = true;
-    this.defaultRequestData.filter = {
-      ...this.defaultRequestData.filter,
+    this.requestData.filter = {
+      ...this.requestData.filter,
       language: this.language,
     };
 
     this.loadData();
     this.setupBookmarkChanged();
     this.setupBookmarkDeleted();
+    this.setupLoadClicked();
   }
 
   ngOnDestroy(): void {
@@ -60,9 +65,10 @@ export class RepositoryConfigDirective implements OnInit, OnDestroy {
   loadData(): void {
     this.subscriptions.push(
       this.gitHubHttpService
-        .getRepoListByLanguage$(this.defaultRequestData)
+        .getRepoListByLanguage$(this.requestData)
         .subscribe((item) => {
-          this.data = item ?? [];
+          this.data = this.data.concat(item ?? []);
+          console.log(this.data);
           this.repositoryContainer.repoData = this.data;
         })
     );
@@ -101,6 +107,13 @@ export class RepositoryConfigDirective implements OnInit, OnDestroy {
     );
   }
 
+  setupLoadClicked(): void {
+    this.repositoryContainer.loadClicked.subscribe(() => {
+      this.updateRequestData();
+      this.loadData();
+    });
+  }
+
   private updateData(repository: Repository): void {
     this.data = this.data.map((item) =>
       item.id === repository.id ? repository : item
@@ -108,9 +121,10 @@ export class RepositoryConfigDirective implements OnInit, OnDestroy {
     this.repositoryContainer.repoData = this.data;
   }
 
-  private handleBookmarkChange(repository: Repository): void {
-    if (repository.isBookmark) {
-      this.bookmarkService.removeBookmark(repository);
-    }
+  private updateRequestData(): void {
+    this.requestData = {
+      ...this.requestData,
+      page: this.requestData.page + 1,
+    };
   }
 }

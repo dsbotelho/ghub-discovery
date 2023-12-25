@@ -38,6 +38,7 @@ export class RepositoryContainerComponent {
   }
 
   @Output() bookmarkChanged = new EventEmitter<Repository>();
+  @Output() loadClicked = new EventEmitter<void>();
 
   _repoData: Repository[] = [];
 

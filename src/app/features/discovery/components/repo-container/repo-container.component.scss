@@ -14,6 +14,12 @@
     padding: 25px 3rem;
     overflow-x: hidden;
 
+    &__load-button {
+      display: flex;
+      align-items: center;
+      margin-left: 1rem;
+    }
+
     &:hover {
       overflow-x: auto;
     }

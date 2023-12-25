@@ -11,8 +11,10 @@
         [repository]="repository"
         (bookmarkChanged)="bookmarkChanged.emit($event)"
       />
-      <div *ngIf="showLoadButton">
-        <button nz-button nzShape="round">+</button>
+      <div class="slider__container__load-button" *ngIf="showLoadButton">
+        <button nz-button nzShape="round" (click)="loadClicked.emit()">
+          +
+        </button>
       </div>
     </div>
   </div>
