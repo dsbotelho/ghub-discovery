@@ -1,0 +1,25 @@
+.metrics {
+  display: flex;
+  height: 40%;
+
+  &__item {
+    display: flex;
+    margin: 1rem;
+
+    &--label {
+      display: flex;
+      flex-direction: column;
+      margin-left: 8px;
+    }
+
+    &--icon {
+      display: flex;
+      align-items: flex-start;
+
+      i {
+        width: 15px;
+        padding-top: 4px;
+      }
+    }
+  }
+}

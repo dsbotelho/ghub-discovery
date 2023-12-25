@@ -10,6 +10,7 @@ import { LoginComponent } from './features/authentication/components/login/login
 import { DiscoveryContainerComponent } from './features/discovery/components/discovery-container/discovery-container.component';
 import { RepositoryContainerComponent } from './features/discovery/components/repo-container/repo-container.component';
 import { RepoItemComponent } from './features/discovery/components/repo-item/repo-item.component';
+import { RepoItemMetricsComponent } from './features/discovery/components/repo-metrics/repo-metrics.component';
 import { TopicSelectorComponent } from './features/discovery/components/topic-selector/topic-selector.component';
 import { BookmarkConfigDirective } from './features/discovery/directives/bookmark-config.directive';
 import { RepositoryConfigDirective } from './features/discovery/directives/repository-config.directive';
@@ -29,6 +30,7 @@ import { LoaderInterceptor } from './utils/interceptors/loader.interceptor';
     RepositoryConfigDirective,
     ShortNumberPipe,
     BookmarkConfigDirective,
+    RepoItemMetricsComponent,
   ],
   imports: [
     //Common

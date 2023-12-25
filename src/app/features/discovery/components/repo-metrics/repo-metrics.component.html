@@ -1,0 +1,22 @@
+<div class="metrics">
+  <div class="metrics__item">
+    <div class="metrics__item--icon">
+      <i class="star-regular"></i>
+    </div>
+    <div class="metrics__item--label">
+      <span>{{ repository.stargazers_count | shortNumber }}</span>
+      <span>Stars</span>
+    </div>
+  </div>
+  <div class="metrics__item">
+    <div class="metrics__item--icon">
+      <i class="code-fork-icon"></i>
+    </div>
+    <div class="metrics__item--label">
+      <span>{{ repository.forks | shortNumber }}</span>
+      <span>Forks</span>
+    </div>
+  </div>
+  <div class="metrics__item"></div>
+  <div class="metrics__item"></div>
+</div>
