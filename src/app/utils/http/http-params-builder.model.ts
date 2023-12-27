@@ -16,7 +16,10 @@ export class HttpParamsBuilder {
 
   paginatedRequest(request: PaginatedRequest): HttpParamsBuilder {
     if (request?.per_page != null) {
-      this.httpParams = this.httpParams.append('per_page', `${request.per_page}`);
+      this.httpParams = this.httpParams.append(
+        'per_page',
+        `${request.per_page}`
+      );
     }
 
     if (request?.page > 0) {
@@ -37,24 +40,4 @@ export class HttpParamsBuilder {
 
     return this;
   }
-
-  // filterableRequest<T extends Search>(request: FilterableRequest<T>): HttpParamsBuilder {
-  //   if (request?.groupId != null) {
-  //     this.httpParams = this.httpParams.append('groupId', `${request.groupId}`);
-  //   }
-
-  //   if (request?.startDate != null && request?.endDate != null) {
-  //     this.httpParams = this.httpParams.append('startDate', `${HttpParamsBuilder.httpDateFormat(request.startDate)}`);
-  //     this.httpParams = this.httpParams.append('endDate', `${HttpParamsBuilder.httpDateFormat(request.endDate)}`);
-  //   }
-
-  //   if (request?.filter?.value != null) {
-  //     this.httpParams = this.httpParams.append('filter.value', `${request.filter.value}`);
-  //     request.filter.names.forEach(item => {
-  //       this.httpParams = this.httpParams.append('filter.names', `${item}`);
-  //     });
-  //   }
-
-  //   return this;
-  // }
 }

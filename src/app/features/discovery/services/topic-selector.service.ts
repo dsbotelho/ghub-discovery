@@ -3,7 +3,7 @@ import { Topic, topicsInitialState } from '../models/topic.model';
 
 @Injectable({ providedIn: 'root' })
 export class TopicSelectorService {
-  private readonly topicsSignal = signal<Topic[]>(topicsInitialState);
+  private topicsSignal = signal<Topic[]>(topicsInitialState);
 
   readonly topics = this.topicsSignal.asReadonly();
 

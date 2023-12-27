@@ -68,8 +68,7 @@ export class RepositoryConfigDirective implements OnInit, OnDestroy {
         .getRepoListByLanguage$(this.requestData)
         .subscribe((item) => {
           this.data = this.data.concat(item ?? []);
-          console.log(this.data);
-          this.repositoryContainer.repoData = this.data;
+          this.repositoryContainer.repositoryData = this.data;
         })
     );
   }
@@ -118,7 +117,7 @@ export class RepositoryConfigDirective implements OnInit, OnDestroy {
     this.data = this.data.map((item) =>
       item.id === repository.id ? repository : item
     );
-    this.repositoryContainer.repoData = this.data;
+    this.repositoryContainer.repositoryData = this.data;
   }
 
   private updateRequestData(): void {

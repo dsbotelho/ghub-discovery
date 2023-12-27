@@ -25,6 +25,10 @@ export class GithubHttpService {
       .paginatedRequest(requestData)
       .sortableRequest(requestData)
       .build();
+
+    // This is not supposed to be here and it is not a good pratice.
+    // In future improvements, the user will be able to customize this information.
+    // When that happens, this code will be moved to its own method with its own logic.
     const string = encodeURIComponent(
       `language:${requestData.filter.language} stars:>${requestData.filter.stars}`
     );

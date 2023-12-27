@@ -8,8 +8,6 @@ import { TopicSelectorService } from '../../services/topic-selector.service';
   styleUrl: './discovery-container.component.scss',
 })
 export class DiscoveryContainerComponent {
-  readonly bookmarksTitle = 'My Bookmarks';
-
   selectedTopics = this.topicsService.topics;
   bookmarks = this.bookmarkService.bookmarks;
 

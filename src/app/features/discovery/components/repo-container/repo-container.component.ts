@@ -32,15 +32,15 @@ import { LoaderService } from '../../services/loader.service';
 export class RepositoryContainerComponent {
   @Input() title!: string;
   @Input() showLoadButton = false;
-  @Input() set repoData(data: Repository[]) {
-    this._repoData = [...data];
+  @Input() set repositoryData(data: Repository[]) {
+    this._repositoryData = [...data];
     this.cdr.detectChanges();
   }
 
   @Output() bookmarkChanged = new EventEmitter<Repository>();
   @Output() loadClicked = new EventEmitter<void>();
 
-  _repoData: Repository[] = [];
+  _repositoryData: Repository[] = [];
 
   constructor(
     readonly loaderService: LoaderService,

@@ -7,7 +7,7 @@
     <div class="slider__container">
       <ghub-repo-item
         [@fadeAnimation]="'in'"
-        *ngFor="let repository of _repoData"
+        *ngFor="let repository of _repositoryData"
         [repository]="repository"
         (bookmarkChanged)="bookmarkChanged.emit($event)"
       />
