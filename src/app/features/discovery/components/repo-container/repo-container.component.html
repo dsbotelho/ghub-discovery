@@ -3,7 +3,7 @@
     {{ title }}
   </h2>
 
-  <div class="slider">
+  <div *ngIf="_repositoryData.length > 0; else noData" class="slider">
     <div class="slider__container">
       <ghub-repo-item
         [@fadeAnimation]="'in'"
@@ -19,3 +19,7 @@
     </div>
   </div>
 </nz-spin>
+
+<ng-template #noData>
+  <nz-empty nzNotFoundImage="simple" nzNotFoundContent="No Data"></nz-empty>
+</ng-template>

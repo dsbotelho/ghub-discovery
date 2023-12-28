@@ -3,10 +3,6 @@
 
 @for (topic of selectedTopics(); track topic.name) {
 <ng-container *ngIf="topic.isSelected">
-  <ghub-repository-container
-    ghubRepositoryConfig
-    [language]="topic.name"
-    [title]="topic.name"
-  />
+  <ghub-repository-container ghubRepositoryConfig [language]="topic.name" />
 </ng-container>
 }

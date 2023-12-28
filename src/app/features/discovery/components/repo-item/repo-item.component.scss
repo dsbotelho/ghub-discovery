@@ -25,6 +25,10 @@ $card-header-height: 3rem;
     }
 
     &--title {
+      max-width: 50px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       font-weight: bold;
       margin: 0 0.5rem;
     }
@@ -48,8 +52,19 @@ $card-header-height: 3rem;
   &__body {
     height: calc(100% - $card-header-height);
 
-    span {
-      color: #a4a8b0;
+    div:first-of-type {
+      height: 50%;
+      padding: 0.4rem;
+
+      span {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        // color: #a4a8b0;
+        color: #657391;
+      }
     }
   }
 

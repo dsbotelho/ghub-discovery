@@ -15,7 +15,9 @@
   </div>
   <div class="repo-card__body">
     <div>
-      <span> {{ repository.description }}</span>
+      <span nz-tooltip [nzTooltipTitle]="repository.description">{{
+        repository.description
+      }}</span>
     </div>
     <ghub-repo-metrics [repository]="repository" />
   </div>

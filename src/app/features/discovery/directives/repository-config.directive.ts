@@ -44,6 +44,7 @@ export class RepositoryConfigDirective implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.repositoryContainer.showLoadButton = true;
+    this.repositoryContainer.title = `Top ${this.language}`;
     this.requestData.filter = {
       ...this.requestData.filter,
       language: this.language,
