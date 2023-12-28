@@ -10,14 +10,14 @@ export class BookmarkConfigDirective implements OnInit, OnDestroy {
   private readonly bookmarkService = inject(BookmarkService);
   private readonly repositoryContainer = inject(RepositoryContainerComponent);
 
+  readonly bookmarksTitle = 'My Bookmarks';
+
   @Input() set bookmarkData(bookmarks: Repository[]) {
-    this.repositoryContainer.repoData = bookmarks;
+    this.repositoryContainer.repositoryData = bookmarks;
   }
 
-  // bookmarkData = this.bookmarkService.bookmarks;
-
   ngOnInit(): void {
-    this.repositoryContainer.title = 'My Bookmarks';
+    this.repositoryContainer.title = this.bookmarksTitle;
 
     this.repositoryContainer.bookmarkChanged.subscribe((repository) =>
       this.bookmarkService.removeBookmark({ ...repository, isBookmark: false })
@@ -25,7 +25,6 @@ export class BookmarkConfigDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('onDestroy');
     this.bookmarkService.saveBookmarks();
   }
 }
