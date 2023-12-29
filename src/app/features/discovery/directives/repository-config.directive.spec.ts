@@ -24,6 +24,8 @@ describe('RepositoryConfigDirective', () => {
     id: 1,
     full_name: 'name',
     isBookmark: false,
+    html_url: '',
+    watchers_count: 10,
     stargazers_count: 10,
     topics: [],
     updated_at: new Date(),

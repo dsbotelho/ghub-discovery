@@ -8,11 +8,13 @@ describe('BookmarkService', () => {
   let sessionStorage: SessionStorageService;
 
   const repository: Repository = {
-    id: 1,
     description: 'description',
     forks: 10,
+    id: 1,
     full_name: 'name',
     isBookmark: false,
+    html_url: '',
+    watchers_count: 10,
     stargazers_count: 10,
     topics: [],
     updated_at: new Date(),

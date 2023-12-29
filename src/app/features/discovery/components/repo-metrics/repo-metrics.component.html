@@ -17,6 +17,18 @@
       <span>Forks</span>
     </div>
   </div>
-  <div class="metrics__item"></div>
-  <div class="metrics__item"></div>
+  <div class="metrics__item">
+    <div class="metrics__item--icon">
+      <i class="eye-icon"></i>
+    </div>
+    <div class="metrics__item--label">
+      <span>{{ repository.watchers_count | shortNumber }}</span>
+      <span>Watching</span>
+    </div>
+  </div>
+  <div class="metrics__item">
+    <a [href]="repository.html_url" target="_blank"
+      ><i class="github-icon"></i
+    ></a>
+  </div>
 </div>

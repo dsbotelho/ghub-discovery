@@ -16,6 +16,8 @@ export class RepositoryHandlerService {
           full_name: item.full_name,
           id: item.id,
           stargazers_count: item.stargazers_count,
+          watchers_count: item.watchers_count,
+          html_url: item.html_url,
           topics: item.topics,
           updated_at: item.updated_at,
           owner: item.owner,
