@@ -16,7 +16,11 @@ export class BookmarkService {
   readonly bookmarks = this.bookmarksSignal.asReadonly();
   readonly bookmarkRemoved$ = this.bookmarkRemovedSubject.asObservable();
 
-  constructor(private readonly sessionStorage: SessionStorageService) {}
+  constructor(private readonly sessionStorage: SessionStorageService) {
+    this.bookmarksSignal.set(
+      this.sessionStorage.retrieve(this.sessionStorageKey) as Repository[]
+    );
+  }
 
   /**
    * Add a repository to the bookmark list.

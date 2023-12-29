@@ -23,8 +23,9 @@ describe('BookmarkService', () => {
       providers: [SessionStorageService],
     });
 
-    service = TestBed.inject(BookmarkService);
     sessionStorage = TestBed.inject(SessionStorageService);
+    jest.spyOn(sessionStorage, 'retrieve').mockReturnValue([]);
+    service = TestBed.inject(BookmarkService);
   });
 
   it('should be created', () => {

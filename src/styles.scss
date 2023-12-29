@@ -6,15 +6,25 @@ body,
 html {
   margin: 0;
   padding: 1.5rem 0 0 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
+// ::-webkit-scrollbar {
+//   height: 4px;
+//   width: 4px;
+//   background: gray;
+// }
+// ::-webkit-scrollbar-thumb:horizontal {
+//   background: #000;
+//   border-radius: 10px;
+// }
+
 .star-regular {
-    content: url("/assets/icons/svg/star-regular.svg");
+  content: url("/assets/icons/svg/star-regular.svg");
 }
 
 .star-solid {
-    content: url("/assets/icons/svg/star-solid.svg");
+  content: url("/assets/icons/svg/star-solid.svg");
 }
 
 .code-fork-icon {

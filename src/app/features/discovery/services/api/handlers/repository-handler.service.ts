@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { RepositoryHttpResponse } from '../../../models/api/repository-http.model';
 import { Repository } from '../../../models/repository.model';
+import { BookmarkService } from '../../bookmark.service';
 
 @Injectable({ providedIn: 'root' })
 export class RepositoryHandlerService {
-  constructor() {}
+  constructor(private readonly bookMarkService: BookmarkService) {}
 
   mapRepositoryHttpResponse(response: RepositoryHttpResponse): Repository[] {
     return response.items.map(
@@ -18,7 +19,7 @@ export class RepositoryHandlerService {
           topics: item.topics,
           updated_at: item.updated_at,
           owner: item.owner,
-          isBookmark: false,
+          isBookmark: this.bookMarkService.isBookmark(item.id),
         }
     );
   }
