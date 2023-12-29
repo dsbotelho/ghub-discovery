@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +23,7 @@
     "ng-zorro-antd": "^17.0.1",
     "ngx-webstorage": "^13.0.1",
     "rxjs": "~7.8.0",
+    "ts-node": "^10.9.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
   },

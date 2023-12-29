@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Topic } from '../../models/topic.model';
 import { TopicSelectorService } from '../../services/topic-selector.service';
@@ -11,6 +12,7 @@ describe('TopicSelectorComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TopicSelectorComponent],
+      schemas: [NO_ERRORS_SCHEMA],
     });
 
     topicService = TestBed.inject(TopicSelectorService);

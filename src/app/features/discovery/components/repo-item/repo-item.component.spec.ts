@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Repository } from '../../models/repository.model';
 import { RepoItemComponent } from './repo-item.component';
@@ -20,6 +21,7 @@ describe('RepoItemComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [RepoItemComponent],
+      schemas: [NO_ERRORS_SCHEMA],
     });
 
     fixture = TestBed.createComponent(RepoItemComponent);

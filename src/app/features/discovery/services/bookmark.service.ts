@@ -17,9 +17,9 @@ export class BookmarkService {
   readonly bookmarkRemoved$ = this.bookmarkRemovedSubject.asObservable();
 
   constructor(private readonly sessionStorage: SessionStorageService) {
-    this.bookmarksSignal.set(
-      this.sessionStorage.retrieve(this.sessionStorageKey) as Repository[]
-    );
+    // this.bookmarksSignal.set(
+    //   this.sessionStorage.retrieve(this.sessionStorageKey) as Repository[]
+    // );
   }
 
   /**

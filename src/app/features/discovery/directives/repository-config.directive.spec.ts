@@ -1,4 +1,5 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SessionStorageService } from 'ngx-webstorage';
@@ -33,6 +34,7 @@ describe('RepositoryConfigDirective', () => {
       declarations: [RepositoryConfigDirective, RepositoryContainerComponent],
       providers: [SessionStorageService],
       imports: [HttpClientTestingModule, NoopAnimationsModule],
+      schemas: [NO_ERRORS_SCHEMA],
     });
 
     gitHubHttpService = TestBed.inject(GithubHttpService);

@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Repository } from '../../models/repository.model';
@@ -11,6 +12,7 @@ describe('RepositoryContainerComponent', () => {
     TestBed.configureTestingModule({
       declarations: [RepositoryContainerComponent],
       imports: [NoopAnimationsModule],
+      schemas: [NO_ERRORS_SCHEMA],
     });
 
     fixture = TestBed.createComponent(RepositoryContainerComponent);

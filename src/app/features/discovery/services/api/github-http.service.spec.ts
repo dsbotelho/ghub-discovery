@@ -4,6 +4,7 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { TestBed, waitForAsync } from '@angular/core/testing';
+import { SessionStorageService } from 'ngx-webstorage';
 import { HttpParamsBuilder } from '../../../../utils/http/http-params-builder.model';
 import {
   RepositoryHttpResponse,
@@ -20,6 +21,7 @@ describe('GithubHttpService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
+      providers: [SessionStorageService],
     });
 
     service = TestBed.inject(GithubHttpService);

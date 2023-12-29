@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SessionStorageService } from 'ngx-webstorage';
 import { BookmarkService } from '../../services/bookmark.service';
@@ -14,6 +15,7 @@ describe('DiscoveryContainerComponent', () => {
     TestBed.configureTestingModule({
       declarations: [DiscoveryContainerComponent],
       providers: [SessionStorageService],
+      schemas: [NO_ERRORS_SCHEMA],
     });
 
     topicService = TestBed.inject(TopicSelectorService);
