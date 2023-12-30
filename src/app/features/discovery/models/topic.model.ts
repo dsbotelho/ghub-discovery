@@ -19,7 +19,7 @@ export const topicsInitialState: Topic[] = [
     isSelected: false,
   },
   {
-    name: TopicLanguages.css,
+    name: TopicLanguages.scss,
     isSelected: false,
   },
 ];

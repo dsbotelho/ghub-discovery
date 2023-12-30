@@ -12,6 +12,7 @@ describe('BookmarkConfigDirective', () => {
   let bookmarkService: BookmarkService;
   let component: RepositoryContainerComponent;
   let fixture: ComponentFixture<RepositoryContainerComponent>;
+  let sessionStorage: SessionStorageService;
 
   const language = 'language';
   const repository: Repository = {
@@ -35,6 +36,8 @@ describe('BookmarkConfigDirective', () => {
       schemas: [NO_ERRORS_SCHEMA],
     });
 
+    sessionStorage = TestBed.inject(SessionStorageService);
+    jest.spyOn(sessionStorage, 'retrieve').mockReturnValue([]);
     bookmarkService = TestBed.inject(BookmarkService);
     fixture = TestBed.createComponent(RepositoryContainerComponent);
     component = fixture.componentInstance;
@@ -64,11 +67,4 @@ describe('BookmarkConfigDirective', () => {
 
     component.bookmarkChanged.emit(repository);
   }));
-
-  it('should handle on destroy', () => {
-    jest.spyOn(bookmarkService, 'saveBookmarks').mockImplementation(jest.fn());
-
-    directive.ngOnDestroy();
-    expect(bookmarkService.saveBookmarks).toHaveBeenCalled();
-  });
 });

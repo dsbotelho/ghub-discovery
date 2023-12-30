@@ -16,6 +16,7 @@ describe('RepositoryConfigDirective', () => {
   let bookmarkService: BookmarkService;
   let component: RepositoryContainerComponent;
   let fixture: ComponentFixture<RepositoryContainerComponent>;
+  let sessionStorage: SessionStorageService;
 
   const language = 'language';
   const repository: Repository = {
@@ -34,11 +35,16 @@ describe('RepositoryConfigDirective', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [RepositoryConfigDirective, RepositoryContainerComponent],
-      providers: [SessionStorageService],
+      providers: [
+        SessionStorageService,
+        { provide: 'WEB_API_URL', useValue: '' },
+      ],
       imports: [HttpClientTestingModule, NoopAnimationsModule],
       schemas: [NO_ERRORS_SCHEMA],
     });
 
+    sessionStorage = TestBed.inject(SessionStorageService);
+    jest.spyOn(sessionStorage, 'retrieve').mockReturnValue([]);
     gitHubHttpService = TestBed.inject(GithubHttpService);
     bookmarkService = TestBed.inject(BookmarkService);
     fixture = TestBed.createComponent(RepositoryContainerComponent);
@@ -139,6 +145,7 @@ describe('RepositoryConfigDirective', () => {
   }));
 
   it('should setup bookmark deleted', waitForAsync(() => {
+    jest.spyOn(sessionStorage, 'store').mockImplementation(jest.fn());
     directive.data = [{ ...repository, isBookmark: true }];
 
     directive.setupBookmarkDeleted();

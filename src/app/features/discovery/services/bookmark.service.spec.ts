@@ -36,11 +36,17 @@ describe('BookmarkService', () => {
   });
 
   it('should add a bookmark', () => {
+    jest.spyOn(sessionStorage, 'store').mockImplementation(jest.fn());
+
     service.addBookmark(repository);
     expect(service.bookmarks()).toEqual([repository]);
+    expect(sessionStorage.store).toHaveBeenCalledWith('bookmarks', [
+      repository,
+    ]);
   });
 
   it('should remove a bookmark', waitForAsync(() => {
+    jest.spyOn(sessionStorage, 'store').mockImplementation(jest.fn());
     service.addBookmark(repository);
 
     service.bookmarkRemoved$.subscribe((item) => {
@@ -49,20 +55,15 @@ describe('BookmarkService', () => {
 
     service.removeBookmark(repository);
     expect(service.bookmarks()).toEqual([]);
+    expect(sessionStorage.store).toHaveBeenCalledWith('bookmarks', []);
   }));
 
   it('should check if repository is a bookmark', () => {
+    jest.spyOn(sessionStorage, 'store').mockImplementation(jest.fn());
     const invalidId = -1;
     service.addBookmark(repository);
 
     expect(service.isBookmark(repository.id)).toBeTruthy();
     expect(service.isBookmark(invalidId)).toBeFalsy();
-  });
-
-  it('should save bookmarks to the session storage', () => {
-    jest.spyOn(sessionStorage, 'store').mockImplementation(jest.fn());
-
-    service.saveBookmarks();
-    expect(sessionStorage.store).toHaveBeenCalledWith('bookmarks', []);
   });
 });

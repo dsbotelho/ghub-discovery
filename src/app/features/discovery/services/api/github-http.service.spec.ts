@@ -17,13 +17,19 @@ describe('GithubHttpService', () => {
   let service: GithubHttpService;
   let httpMock: HttpTestingController;
   let handler: RepositoryHandlerService;
+  let sessionStorage: SessionStorageService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [SessionStorageService],
+      providers: [
+        SessionStorageService,
+        { provide: 'WEB_API_URL', useValue: '' },
+      ],
     });
 
+    sessionStorage = TestBed.inject(SessionStorageService);
+    jest.spyOn(sessionStorage, 'retrieve').mockReturnValue([]);
     service = TestBed.inject(GithubHttpService);
     handler = TestBed.inject(RepositoryHandlerService);
     httpMock = TestBed.inject(HttpTestingController);
@@ -70,7 +76,7 @@ describe('GithubHttpService', () => {
       `language:${requestData.filter.language} stars:>${requestData.filter.stars}`
     );
     const request = httpMock.expectOne(
-      `${service.gitHubUrl}${expectedQuery}&per_page=10`
+      `repositories?q=${expectedQuery}&per_page=10`
     );
     expect(request.request.method).toEqual('GET');
     request.flush(expectedApiResponse);

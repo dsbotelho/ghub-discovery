@@ -10,6 +10,7 @@ describe('DiscoveryContainerComponent', () => {
   let fixture: ComponentFixture<DiscoveryContainerComponent>;
   let topicService: TopicSelectorService;
   let bookmarkService: BookmarkService;
+  let sessionStorage: SessionStorageService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -18,6 +19,8 @@ describe('DiscoveryContainerComponent', () => {
       schemas: [NO_ERRORS_SCHEMA],
     });
 
+    sessionStorage = TestBed.inject(SessionStorageService);
+    jest.spyOn(sessionStorage, 'retrieve').mockReturnValue([]);
     topicService = TestBed.inject(TopicSelectorService);
     bookmarkService = TestBed.inject(BookmarkService);
     fixture = TestBed.createComponent(DiscoveryContainerComponent);

@@ -11,9 +11,15 @@
       flex-direction: column;
       margin-left: 8px;
 
-      span:last-of-type {
-        font-size: 14px;
-        color: #a4a8b0;
+      span {
+        &:first-of-type {
+          font-weight: 500;
+        }
+
+        &:last-of-type {
+          font-size: 14px;
+          color: #a4a8b0;
+        }
       }
     }
 

@@ -1,4 +1,4 @@
-import { Directive, Input, OnDestroy, OnInit } from '@angular/core';
+import { Directive, Input, OnInit } from '@angular/core';
 import { RepositoryContainerComponent } from '../components/repo-container/repo-container.component';
 import { Repository } from '../models/repository.model';
 import { BookmarkService } from '../services/bookmark.service';
@@ -6,7 +6,7 @@ import { BookmarkService } from '../services/bookmark.service';
 @Directive({
   selector: '[ghubBookmarkConfig]',
 })
-export class BookmarkConfigDirective implements OnInit, OnDestroy {
+export class BookmarkConfigDirective implements OnInit {
   readonly bookmarksTitle = 'My Bookmarks';
 
   @Input() set bookmarkData(bookmarks: Repository[]) {
@@ -24,9 +24,5 @@ export class BookmarkConfigDirective implements OnInit, OnDestroy {
     this.repositoryContainer.bookmarkChanged.subscribe((repository) =>
       this.bookmarkService.removeBookmark({ ...repository, isBookmark: false })
     );
-  }
-
-  ngOnDestroy(): void {
-    this.bookmarkService.saveBookmarks();
   }
 }

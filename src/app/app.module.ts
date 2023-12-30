@@ -29,6 +29,10 @@ import { LoaderInterceptor } from './utils/interceptors/loader.interceptor';
       useClass: LoaderInterceptor,
       multi: true,
     },
+    {
+      provide: 'WEB_API_URL',
+      useValue: 'https://api.github.com/search/',
+    },
   ],
   bootstrap: [AppComponent],
 })

@@ -5,7 +5,7 @@ $card-header-height: 3rem;
 }
 
 .repo-card {
-  background: lightblue;
+  background: #e8f3f7;
   height: 200px;
   width: 100%;
   min-width: 300px;
@@ -38,13 +38,13 @@ $card-header-height: 3rem;
 
       button {
         border: none;
+        height: 0;
         padding: 0;
-        background-color: lightblue;
-        cursor: pointer;
+        // cursor: pointer;
 
-        &:hover {
-          cursor: pointer;
-        }
+        // &:hover {
+        //   cursor: pointer;
+        // }
       }
     }
   }

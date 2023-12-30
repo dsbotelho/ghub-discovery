@@ -17,9 +17,9 @@ export class BookmarkService {
   readonly bookmarkRemoved$ = this.bookmarkRemovedSubject.asObservable();
 
   constructor(private readonly sessionStorage: SessionStorageService) {
-    // this.bookmarksSignal.set(
-    //   this.sessionStorage.retrieve(this.sessionStorageKey) as Repository[]
-    // );
+    this.bookmarksSignal.set(
+      this.sessionStorage.retrieve(this.sessionStorageKey) as Repository[]
+    );
   }
 
   /**
@@ -29,6 +29,7 @@ export class BookmarkService {
    */
   addBookmark(repository: Repository): void {
     this.bookmarksSignal.update((bookmarks) => [...bookmarks, repository]);
+    this.saveBookmarks();
   }
 
   /**
@@ -43,6 +44,7 @@ export class BookmarkService {
     );
 
     this.bookmarkRemovedSubject.next(repository);
+    this.saveBookmarks();
   }
 
   /**
@@ -60,7 +62,7 @@ export class BookmarkService {
   /**
    * Saves the current bookmarks in the browser session storage.
    */
-  saveBookmarks(): void {
+  private saveBookmarks(): void {
     this.sessionStorage.store(this.sessionStorageKey, this.bookmarksSignal());
   }
 }

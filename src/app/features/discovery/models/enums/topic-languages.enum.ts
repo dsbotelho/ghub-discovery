@@ -1,7 +1,7 @@
 export enum TopicLanguages {
-  javascript = 'Javascript',
+  javascript = 'JavaScript',
   typescript = 'TypeScript',
   node = 'Node',
   html = 'HTML',
-  css = 'CSS',
+  scss = 'SCSS',
 }
