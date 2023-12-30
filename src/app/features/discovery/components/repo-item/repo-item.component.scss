@@ -27,7 +27,6 @@ $card-header-height: 3rem;
     &--title {
       max-width: 50px;
       overflow: hidden;
-      white-space: nowrap;
       text-overflow: ellipsis;
       font-weight: bold;
       margin: 0 0.5rem;
@@ -40,11 +39,6 @@ $card-header-height: 3rem;
         border: none;
         height: 0;
         padding: 0;
-        // cursor: pointer;
-
-        // &:hover {
-        //   cursor: pointer;
-        // }
       }
     }
   }
@@ -62,7 +56,6 @@ $card-header-height: 3rem;
         -webkit-line-clamp: 3;
         overflow: hidden;
         text-overflow: ellipsis;
-        // color: #a4a8b0;
         color: #657391;
       }
     }

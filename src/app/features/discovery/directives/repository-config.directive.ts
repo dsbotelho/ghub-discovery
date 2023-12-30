@@ -12,6 +12,7 @@ import { BookmarkService } from '../services/bookmark.service';
  * - Fetches data based on a selected language.
  * - Handles adding/removing from bookmarks
  * - Handles loading additional repositories
+ * - Handles sort logic
  */
 @Directive({
   selector: '[ghubRepositoryConfig]',
@@ -44,6 +45,7 @@ export class RepositoryConfigDirective implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.repositoryContainer.showLoadButton = true;
+    this.repositoryContainer.isSortVisible = true;
     this.repositoryContainer.title = `Top ${this.language}`;
     this.requestData.filter = {
       ...this.requestData.filter,
@@ -54,6 +56,7 @@ export class RepositoryConfigDirective implements OnInit, OnDestroy {
     this.setupBookmarkChanged();
     this.setupBookmarkDeleted();
     this.setupLoadClicked();
+    this.setupSortChanged();
   }
 
   ngOnDestroy(): void {
@@ -62,13 +65,14 @@ export class RepositoryConfigDirective implements OnInit, OnDestroy {
 
   /**
    * Fetches top repositories for this directive language.
+   * @param isSorting If it's not a sorting request > concat data to the existing array.
    */
-  loadData(): void {
+  loadData(isSorting: boolean = false): void {
     this.subscriptions.push(
       this.gitHubHttpService
         .getRepoListByLanguage$(this.requestData)
         .subscribe((item) => {
-          this.data = this.data.concat(item ?? []);
+          this.data = isSorting ? item ?? [] : this.data.concat(item ?? []);
           this.repositoryContainer.repositoryData = this.data;
         })
     );
@@ -107,10 +111,35 @@ export class RepositoryConfigDirective implements OnInit, OnDestroy {
     );
   }
 
+  /**
+   * Listens for button click to load additional data to the current repository list.
+   */
   setupLoadClicked(): void {
     this.repositoryContainer.loadClicked.subscribe(() => {
-      this.updateRequestData();
+      this.requestData = {
+        ...this.requestData,
+        page: this.requestData.page + 1,
+      };
+
       this.loadData();
+    });
+  }
+
+  /**
+   * Listens for sort changes.
+   * Resets the request data to default values in order to avoid unwanted behavior.
+   * TODO: Refactor/Improve this behavior .
+   */
+  setupSortChanged(): void {
+    this.repositoryContainer.sortChanged.subscribe((item) => {
+      this.requestData = {
+        ...this.requestData,
+        per_page: this.defaultPerPage,
+        page: this.defaultPage,
+        sort: item.sort,
+        order: item.order,
+      };
+      this.loadData(true);
     });
   }
 
@@ -119,12 +148,5 @@ export class RepositoryConfigDirective implements OnInit, OnDestroy {
       item.id === repository.id ? repository : item
     );
     this.repositoryContainer.repositoryData = this.data;
-  }
-
-  private updateRequestData(): void {
-    this.requestData = {
-      ...this.requestData,
-      page: this.requestData.page + 1,
-    };
   }
 }

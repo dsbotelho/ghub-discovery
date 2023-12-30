@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
@@ -14,6 +15,7 @@ import { TopicSelectorComponent } from './components/topic-selector/topic-select
 import { BookmarkConfigDirective } from './directives/bookmark-config.directive';
 import { RepositoryConfigDirective } from './directives/repository-config.directive';
 import { ShortNumberPipe } from './pipes/short-number.pipe';
+import { SortComponent } from './ui/sort/sort.component';
 
 @NgModule({
   imports: [
@@ -26,6 +28,7 @@ import { ShortNumberPipe } from './pipes/short-number.pipe';
     NzButtonModule,
     NzToolTipModule,
     NzEmptyModule,
+    NzDropDownModule,
   ],
   exports: [],
   declarations: [
@@ -37,6 +40,7 @@ import { ShortNumberPipe } from './pipes/short-number.pipe';
     RepositoryConfigDirective,
     ShortNumberPipe,
     BookmarkConfigDirective,
+    SortComponent,
   ],
 })
 export class DiscoveryModule {}

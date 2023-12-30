@@ -1,0 +1,16 @@
+<button nz-button nzType="text" nz-dropdown [nzDropdownMenu]="sortMenu">
+  <i class="angle-down-icon"></i>
+</button>
+
+<nz-dropdown-menu #sortMenu="nzDropdownMenu">
+  <ul nz-menu>
+    @for (sort of sortData; track $index) {
+    <li nz-menu-item (click)="sortClicked(sort)">
+      <div class="sort__item">
+        <span>Sort by {{ sort.sort }}</span>
+        <i [ngClass]="sort.order"></i>
+      </div>
+    </li>
+    }
+  </ul>
+</nz-dropdown-menu>

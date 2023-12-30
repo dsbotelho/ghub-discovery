@@ -1,11 +1,11 @@
-.title {
-  margin-top: 2rem;
-  margin-left: 3rem;
-  margin-bottom: 0;
-}
-
 .slider {
   position: relative;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    margin: 2rem 0.5rem 0 3rem;
+  }
 
   &__container {
     position: relative;

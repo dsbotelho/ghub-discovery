@@ -22,4 +22,8 @@ export const topicsInitialState: Topic[] = [
     name: TopicLanguages.scss,
     isSelected: false,
   },
+  {
+    name: TopicLanguages.vue,
+    isSelected: false,
+  },
 ];

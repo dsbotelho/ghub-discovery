@@ -1,4 +1,4 @@
-export interface RequestData { }
+export interface RequestData {}
 
 export interface QueryRequestData {
   language?: string;
@@ -11,13 +11,8 @@ export interface PaginatedRequest extends RequestData {
 }
 
 export interface SortableRequest extends RequestData {
-  name?: string;
+  sort?: string;
   order?: string;
-}
-
-export interface Sort {
-  name: string;
-  order: string;
 }
 
 export interface CustomFilterableRequest<T> extends RequestData {

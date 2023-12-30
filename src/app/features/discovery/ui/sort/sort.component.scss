@@ -1,0 +1,18 @@
+.asc {
+  content: url("/assets/icons/svg/angle-up-solid.svg");
+}
+
+.desc {
+  content: url("/assets/icons/svg/angle-down-solid.svg");
+}
+
+.sort {
+  &__item {
+    display: flex;
+    justify-content: center;
+
+    span {
+      margin-right: 12px;
+    }
+  }
+}

@@ -13,6 +13,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
+import { SortableRequest } from '../../../../utils/http/request-data.model';
 import { Repository } from '../../models/repository.model';
 import { LoaderService } from '../../services/loader.service';
 
@@ -32,6 +33,7 @@ import { LoaderService } from '../../services/loader.service';
 export class RepositoryContainerComponent {
   @Input() title!: string;
   @Input() showLoadButton = false;
+  @Input() isSortVisible = false;
   @Input() set repositoryData(data: Repository[]) {
     this._repositoryData = [...data];
     this.cdr.detectChanges();
@@ -39,6 +41,7 @@ export class RepositoryContainerComponent {
 
   @Output() bookmarkChanged = new EventEmitter<Repository>();
   @Output() loadClicked = new EventEmitter<void>();
+  @Output() sortChanged = new EventEmitter<SortableRequest>();
 
   _repositoryData: Repository[] = [];
 

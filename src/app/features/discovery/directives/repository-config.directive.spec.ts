@@ -4,6 +4,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SessionStorageService } from 'ngx-webstorage';
 import { of } from 'rxjs';
+import { SortableRequest } from '../../../utils/http/request-data.model';
 import { RepositoryContainerComponent } from '../components/repo-container/repo-container.component';
 import { Repository } from '../models/repository.model';
 import { GithubHttpService } from '../services/api/github-http.service';
@@ -78,9 +79,12 @@ describe('RepositoryConfigDirective', () => {
     jest.spyOn(directive, 'setupBookmarkChanged').mockImplementation(jest.fn());
     jest.spyOn(directive, 'setupBookmarkDeleted').mockImplementation(jest.fn());
     jest.spyOn(directive, 'setupLoadClicked').mockImplementation(jest.fn());
+    jest.spyOn(directive, 'setupSortChanged').mockImplementation(jest.fn());
 
     directive.ngOnInit();
     expect(component.showLoadButton).toBeTruthy();
+    expect(component.isSortVisible).toBeTruthy();
+    expect(component.title).toEqual(`Top ${language}`);
     expect(directive.requestData.filter).toEqual({
       language,
       stars: 1000,
@@ -169,5 +173,27 @@ describe('RepositoryConfigDirective', () => {
     });
 
     component.loadClicked.emit();
+  }));
+
+  it('should setup sort changed', waitForAsync(() => {
+    jest.spyOn(directive, 'loadData').mockImplementation(jest.fn());
+    const sortRequest: SortableRequest = {
+      sort: 'sort',
+      order: 'asc',
+    };
+
+    directive.setupSortChanged();
+    component.sortChanged.subscribe((item) => {
+      expect(directive.requestData).toEqual({
+        ...directive.requestData,
+        per_page: 10,
+        page: 1,
+        sort: item.sort,
+        order: item.order,
+      });
+      expect(directive.loadData).toHaveBeenCalledWith(true);
+    });
+
+    component.sortChanged.emit(sortRequest);
   }));
 });

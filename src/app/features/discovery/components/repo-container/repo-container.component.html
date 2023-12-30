@@ -1,7 +1,10 @@
 <nz-spin [nzSpinning]="loaderService.isLoading()">
-  <h2 class="title">
-    {{ title }}
-  </h2>
+  <div class="slider__title">
+    <h2>
+      {{ title }}
+    </h2>
+    <ghub-sort *ngIf="isSortVisible" (sortChanged)="sortChanged.emit($event)" />
+  </div>
 
   <div *ngIf="_repositoryData.length > 0; else noData" class="slider">
     <div class="slider__container">

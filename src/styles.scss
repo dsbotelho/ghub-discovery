@@ -9,10 +9,8 @@ html {
 }
 
 ::-webkit-scrollbar {
-  height: 4px;
-  width: 4px;
+  height: 6px;
   background: gray;
-  padding-left: 50px;
 }
 ::-webkit-scrollbar-thumb:horizontal {
   background: #000;
@@ -37,4 +35,8 @@ html {
 
 .github-icon {
   content: url("/assets/icons/svg/github.svg");
+}
+
+.angle-down-icon {
+  content: url("/assets/icons/svg/angle-down-solid.svg");
 }

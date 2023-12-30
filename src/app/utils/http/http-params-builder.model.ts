@@ -30,8 +30,8 @@ export class HttpParamsBuilder {
   }
 
   sortableRequest(request: SortableRequest): HttpParamsBuilder {
-    if (request?.name != null) {
-      this.httpParams = this.httpParams.append('name', `${request.name}`);
+    if (request?.sort != null) {
+      this.httpParams = this.httpParams.append('sort', `${request.sort}`);
     }
 
     if (request?.order != null) {

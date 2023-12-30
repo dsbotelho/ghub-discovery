@@ -23,6 +23,7 @@
     <li><a href="#running-unit-tests">Unit tests</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#final-considerations">Final considerations</a></li>
+    <li><a href="#known-issues">Known issues</a></li>
   </ol>
 </details>
 
@@ -48,6 +49,11 @@ As for the UI, the goal was to have a "netflix-like" UI, even if it's far from i
   - This is not ideal for big lists. A new approach will be implemented in future improvements (load data after reaching the end of the scroll ?)
 - The user can toggle which topics should be displayed.
   - Selecting a new topic will trigger a new API request, and a loader will be displayed for each component. This prevents additionals actions until the request is completed
+- Regarding Sorting:
+  - When sorting by any of the properties, an icon will be displayed.
+  - This icon indicates the current sort order:
+    - angle-down icon -> sorting by descending order
+    - angle-up icon -> sorting by ascending order
 
 ### Implementation overview
 
@@ -66,6 +72,10 @@ As for the UI, the goal was to have a "netflix-like" UI, even if it's far from i
   - The goal here was to have a solution that could be used across the entire application.
   - By having different methods, I can control if I want a paginated request, a sortable request or both at the same time
   - The `build()` method will return a `HttpParams` object which can then be passed as parameter in a API request.
+  - By default, 10 items will be requested in each API request. At the moment, this value cannot be customized/changed.
+- Regarding sorting
+  - Sorting by any of the properties available will reset the current request data to the default configuration and will also reset the current data for each repository.
+  - This may not be the best solution, but it was implemented to prevent unwanted behaviour. Will improve on this in the future.
 
 ### Services overview
 
@@ -128,6 +138,7 @@ Node.js and npm installed.
 Since angular is moving away from karma and making jest the default engine for unit testing, I decided to implement my tests with jest.
 
 Run `npm run test` to execute the unit tests via [Jest](https://github.com/thymikee/jest-preset-angular).
+Alternatively, if you're using VSCode, you can use an extension to run the tests using a dedicated UI. Extension `Jest` is the one I'm currently using.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -136,7 +147,7 @@ Run `npm run test` to execute the unit tests via [Jest](https://github.com/thymi
 - [ ] Add authentication using firebase
 - [ ] Allow pagination customization
 - [ ] Allow filter customization (filter by number of stars, forks, etc.)
-- [ ] Allow sorting for each repository
+- [x] Allow sorting for each repository
 - [ ] Add grab behavior for each repository list
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -144,6 +155,10 @@ Run `npm run test` to execute the unit tests via [Jest](https://github.com/thymi
 ## Final Considerations
 
 Unfortunately, I do realize UI improvements can be made. I didn't have the time/opportunity to make it as beautiful as I wanted, but I'll definitively work on it as soon as possible :smiley_cat:
+
+## Known issues
+
+- Bigger repository names may overflow in the header/cause UI issues.
 
 Feel free to offer suggestions or to code review. Feedback is always welcome.
 
