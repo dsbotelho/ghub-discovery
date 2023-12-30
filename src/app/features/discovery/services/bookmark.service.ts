@@ -17,9 +17,7 @@ export class BookmarkService {
   constructor(private readonly sessionStorage: SessionStorageService) {
     // Not ideal.
     // Since I don't have a way to persist bookmarks in a dedicated API, I'm using the browser session storage as a temp solution.
-    this.bookmarksSignal.set(
-      this.sessionStorage.retrieve(this.sessionStorageKey) as Repository[]
-    );
+    this.loadSessionBookmarks();
   }
 
   /**
@@ -64,5 +62,15 @@ export class BookmarkService {
    */
   private saveBookmarks(): void {
     this.sessionStorage.store(this.sessionStorageKey, this.bookmarksSignal());
+  }
+
+  private loadSessionBookmarks(): void {
+    const sessionBookmarks = this.sessionStorage.retrieve(
+      this.sessionStorageKey
+    ) as Repository[];
+
+    if (sessionBookmarks) {
+      this.bookmarksSignal.set(sessionBookmarks);
+    }
   }
 }

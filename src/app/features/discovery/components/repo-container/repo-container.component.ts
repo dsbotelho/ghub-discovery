@@ -35,7 +35,9 @@ export class RepositoryContainerComponent {
   @Input() showLoadButton = false;
   @Input() isSortVisible = false;
   @Input() set repositoryData(data: Repository[]) {
-    this._repositoryData = [...data];
+    if (data) {
+      this._repositoryData = [...data];
+    }
     this.cdr.detectChanges();
   }
 
