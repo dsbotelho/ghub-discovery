@@ -29,6 +29,7 @@ describe('TopicSelectorComponent', () => {
   it('should update topic list', () => {
     jest.spyOn(topicService, 'updateTopic').mockImplementation(jest.fn());
     const topic: Topic = {
+      id: 1,
       name: 'name',
       isSelected: true,
     };

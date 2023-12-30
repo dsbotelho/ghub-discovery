@@ -1,7 +1,7 @@
 <ghub-repository-container ghubBookmarkConfig [bookmarkData]="bookmarks()" />
 <ghub-topic-selector />
 
-@for (topic of selectedTopics(); track topic.name) {
+@for (topic of selectedTopics(); track topic.id) {
 <ng-container *ngIf="topic.isSelected">
   <ghub-repository-container ghubRepositoryConfig [language]="topic.name" />
 </ng-container>

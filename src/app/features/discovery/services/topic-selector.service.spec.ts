@@ -6,6 +6,7 @@ describe('TopicSelectorService', () => {
   let service: TopicSelectorService;
   const initialState: Topic[] = [
     {
+      id: 1,
       name: 'name',
       isSelected: true,
     },
@@ -28,6 +29,7 @@ describe('TopicSelectorService', () => {
     service.updateTopic(initialState[0]);
     expect(service.topics()).toEqual([
       {
+        id: 1,
         name: 'name',
         isSelected: false,
       },
@@ -36,6 +38,7 @@ describe('TopicSelectorService', () => {
 
   it('should not update topics when topic does not exists', () => {
     const topic: Topic = {
+      id: 1,
       name: 'topic',
       isSelected: true,
     };
