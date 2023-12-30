@@ -1,7 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
@@ -20,8 +18,6 @@ import { SortComponent } from './ui/sort/sort.component';
 @NgModule({
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
 
     // Ant
     NzSpinModule,

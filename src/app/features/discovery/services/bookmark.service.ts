@@ -8,15 +8,15 @@ export class BookmarkService {
   private readonly sessionStorageKey = 'bookmarks';
   private readonly bookmarksSignal = signal<Repository[]>([]);
 
-  // Add subject here to deal with removing a bookmark.
-  // Everytime we remove a repository from bookmarks, .next(repoId) on the remove method
-  // The repo directive should then subscribe to this observable and check which item changed
+  // This subject is used to inform its subscribers (a repository container) that a bookmark was removed.
   private bookmarkRemovedSubject = new Subject<Repository>();
 
   readonly bookmarks = this.bookmarksSignal.asReadonly();
   readonly bookmarkRemoved$ = this.bookmarkRemovedSubject.asObservable();
 
   constructor(private readonly sessionStorage: SessionStorageService) {
+    // Not ideal.
+    // Since I don't have a way to persist bookmarks in a dedicated API, I'm using the browser session storage as a temp solution.
     this.bookmarksSignal.set(
       this.sessionStorage.retrieve(this.sessionStorageKey) as Repository[]
     );

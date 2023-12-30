@@ -39,6 +39,8 @@ The user can have its own list of favorite repositories.
 
 By default, there's only a few frontend focused languages that can be browsed. This list is hardcoded in the `topicsInitialState` array. `Typescript` is selected by default.
 
+Final note: Commits were not squashed in order to have access to the evolution of the implementation.
+
 ### UI Overview
 
 As for the UI, the goal was to have a "netflix-like" UI, even if it's far from it at the moment :joy_cat:. Additional considerations regarding UI decisions:

@@ -9,11 +9,14 @@ html {
 }
 
 ::-webkit-scrollbar {
-  height: 6px;
-  background: gray;
+  width: 5px;
+  height: 7px;
+  background: #dde2ee;
 }
-::-webkit-scrollbar-thumb:horizontal {
-  background: #000;
+
+::-webkit-scrollbar-thumb:horizontal,
+::-webkit-scrollbar-thumb:vertical {
+  background: #657391;
   border-radius: 10px;
 }
 
