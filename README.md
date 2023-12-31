@@ -33,11 +33,11 @@ Github Discovery is an angular application created to browse and find the top re
 
 ## About the project
 
-The concept of this project is focused on finding the best and most popular repositories for a given language!
+The concept of this project is focused on finding the best and most popular repositories for a given language/topic!
 
 The user can have its own list of favorite repositories.
 
-By default, there's only a few frontend focused languages that can be browsed. This list is hardcoded in the `topicsInitialState` array. `Typescript` is selected by default.
+By default, there's only a few frontend focused languages that can be browsed. This list is hardcoded in the `topicsInitialState` array. `Javascript` is selected by default.
 
 Final note: Commits were not squashed in order to have access to the evolution of the implementation.
 
@@ -160,7 +160,7 @@ Unfortunately, I do realize UI improvements can be made. I didn't have the time/
 
 ## Known issues
 
-- Bigger repository names may overflow in the header/cause UI issues.
+- Bigger repository names may overflow in the header and cause UI issues.
 
 Feel free to offer suggestions or to code review. Feedback is always welcome.
 
